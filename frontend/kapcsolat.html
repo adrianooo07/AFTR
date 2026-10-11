@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapcsolat – AFTR</title>
+  <link rel="stylesheet" href="kapcsolat.css">
+</head>
+<body>
+  <!-- Kapcsolat: Kosztolányi Levente -->
+  <header class="fejlec">
+    <a class="logó" href="index.html">AFTR</a>
+    <nav class="navigacio"><a href="index.html">Főoldal</a><a href="rolunk.html">Rólunk</a><a class="aktiv" href="kapcsolat.html">Kapcsolat</a></nav>
+    <a class="gomb" href="register.html">Regisztráció</a>
+  </header>
+  <main class="tartalom">
+    <section class="bevezeto">
+      <p class="felirat">KAPCSOLAT</p>
+      <h1>Van kérdésed?</h1>
+      <p>Írj nekünk az AFTR projekttel kapcsolatban. Ez a felület jelenleg bemutatóverzió, ezért az űrlap még nem küld üzenetet.</p>
+      <div class="elerhetoseg">
+        <h2>Elérhetőségek</h2>
+        <p><strong>E-mail:</strong> aftr.projekt@example.com</p>
+        <p><strong>Projekt:</strong> AFTR – alkoholfogyasztás-követő webalkalmazás</p>
+      </div>
+    </section>
+    <section class="urlap-kartya">
+      <h2>Üzenet küldése</h2>
+      <form>
+        <label for="nev">Név</label>
+        <input id="nev" name="nev" type="text" placeholder="Teljes neved" required>
+        <label for="emailcim">E-mail-cím</label>
+        <input id="emailcim" name="emailcim" type="email" placeholder="nev@email.hu" required>
+        <label for="targy">Tárgy</label>
+        <input id="targy" name="targy" type="text" placeholder="Miről írnál?" required>
+        <label for="uzenet">Üzenet</label>
+        <textarea id="uzenet" name="uzenet" rows="5" placeholder="Írd ide az üzeneted..." required></textarea>
+        <button type="button">Üzenet elküldése</button>
+      </form>
+    </section>
+  </main>
+  <footer class="lablec">AFTR · Iskolai szoftverfejlesztői projekt</footer>
+</body>
+</html>
