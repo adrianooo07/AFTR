@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regisztráció – AFTR</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <!-- Regisztráció: Tóth Adrián -->
+  <header class="fejlec"><a class="logó" href="index.html">AFTR</a><a class="vissza" href="index.html">← Vissza a főoldalra</a></header>
+  <main class="oldal">
+    <section class="urlap-kartya">
+      <p class="felirat">CSATLAKOZZ AZ AFTR-HEZ</p>
+      <h1>Fiók létrehozása</h1>
+      <p class="leiras">Készíts fiókot a későbbi funkciók kipróbálásához.</p>
+      <form>
+        <label for="nev">Teljes név</label>
+        <input id="nev" name="nev" type="text" placeholder="A neved" required>
+        <label for="emailcim">E-mail-cím</label>
+        <input id="emailcim" name="emailcim" type="email" placeholder="nev@email.hu" required>
+        <label for="jelszo">Jelszó</label>
+        <input id="jelszo" name="jelszo" type="password" placeholder="Legalább 8 karakter" required>
+        <label for="jelszo-ujra">Jelszó megerősítése</label>
+        <input id="jelszo-ujra" name="jelszo-ujra" type="password" placeholder="Jelszó ismét" required>
+        <button type="button">Regisztráció</button>
+      </form>
+      <p class="valtogatas">Van már fiókod? <a href="login.html">Bejelentkezés</a></p>
+      <p class="megjegyzes">Bemutatóverzió: az űrlap nem ment adatokat.</p>
+    </section>
+  </main>
+</body>
+</html>
