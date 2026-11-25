@@ -20,7 +20,12 @@ export const registerUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
-    const response = await fetch(`${API_URL}/auth/login`, {
+    const url = `${API_URL}/auth/login`;
+
+    console.log("Login URL:", url);
+    console.log("Küldött adatok:", userData);
+
+    const response = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -28,15 +33,26 @@ export const loginUser = async (userData) => {
         body: JSON.stringify(userData)
     });
 
+    console.log("HTTP státusz:", response.status);
+
     const text = await response.text();
 
-    console.log("Backend válaszkód:", response.status);
-    console.log("Backend válasz:", text);
+    console.log("Szerver válasza:", text);
 
-    const data = JSON.parse(text);
+    let data;
+
+    try {
+        data = JSON.parse(text);
+    } catch {
+        throw new Error("A szerver nem JSON választ küldött: " + response.status);
+    }
 
     if (!response.ok) {
         throw new Error(data.message || "Hiba történt a bejelentkezés során!");
+    }
+
+    if (!data.token) {
+        throw new Error("A szerver nem küldött bejelentkezési tokent!");
     }
 
     return data;
