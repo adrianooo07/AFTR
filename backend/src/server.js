@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
@@ -15,12 +16,14 @@ app.get("/", (req, res) => {
 app.get("/api/health", (req, res) => {
     res.status(200).json({
         status: "OK",
-        message: "fut a program kirajjjjjj"
+        message: "fut a backend!"
     });
 });
+
+app.use("/api/auth", authRoutes);
 
 const PORT = 3000;
 
 app.listen(PORT, () => {
-    console.log(`[ 🚀 ] A backend szerver elindult a kovetkezo cimen: http://localhost:${PORT} [ ✅ ]`);
+    console.log(`[ 🚀 ] A backend szerver elindult: http://localhost:${PORT}`);
 });
