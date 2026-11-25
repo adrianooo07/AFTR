@@ -13,8 +13,12 @@ export const FormField = ({ field, labelSpacing, inputPadding = 'py-3' }) => {
   );
 };
 
-export const FormButton = ({ children, margin = 'mt-5' }) => (
-  <button className={`${margin} cursor-pointer rounded-md border-0 border-current bg-accent p-3 text-[14px] font-bold text-on-accent hover:bg-accent-hover`} type="button">
+export const FormButton = ({ children, margin = 'mt-5', disabled = false }) => (
+  <button
+    className={`${margin} cursor-pointer rounded-md border-0 border-current bg-accent p-3 text-[14px] font-bold text-on-accent hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60`}
+    type="submit"
+    disabled={disabled}
+  >
     {children}
   </button>
 );
