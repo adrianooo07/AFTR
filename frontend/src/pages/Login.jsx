@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { AuthForm } from '../components/AuthForm.jsx';
 import { loginUser } from '../services/auth.js';
@@ -28,20 +27,22 @@ export const Login = () => {
     try {
       setLoading(true);
 
-      console.log('Login indítása...');
+      console.log('1. Login indítása');
 
       const data = await loginUser({
         email,
         password
       });
 
-      console.log('Backend adatok:', data);
-      console.log('Kapott token:', data.token);
+      console.log('2. Backend adatok:', data);
+      console.log('3. Kapott token:', data.token);
+      console.log('4. Felhasználó:', data.user);
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
-      console.log('Mentett token:', localStorage.getItem('token'));
+      console.log('5. Mentett token:', localStorage.getItem('token'));
+      console.log('6. Mentett felhasználó:', localStorage.getItem('user'));
 
       setSuccess(data.message || 'Sikeres bejelentkezés!');
       form.reset();
