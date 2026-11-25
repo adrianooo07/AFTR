@@ -15,6 +15,5 @@ export const Login = () => (
     question="Még nincs fiókod?"
     link="/register"
     linkText="Regisztráció"
-    note="Bemutatóverzió: az űrlap nem küld adatokat."
   />
 );
