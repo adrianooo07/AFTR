@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:17
+    container_name: aftr-database
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aftr
+      POSTGRES_PASSWORD: aftr_admin123
+      POSTGRES_DB: aftr
+    ports:
+      - "5432:5432"
+    volumes:
+      - aftr_data:/var/lib/postgresql/data
+
+volumes:
+  aftr_data:
