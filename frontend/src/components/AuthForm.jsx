@@ -1,7 +1,22 @@
 import { Link } from 'react-router-dom';
 import { FormButton, FormField } from './FormField.jsx';
 
-export const AuthForm = ({ isRegister = false, heading, title, description, fields, button, question, link, linkText, note }) => {
+export const AuthForm = ({
+  isRegister = false,
+  heading,
+  title,
+  description,
+  fields,
+  button,
+  question,
+  link,
+  linkText,
+  note,
+  onSubmit,
+  error,
+  success,
+  loading = false
+}) => {
   const pagePadding = isRegister ? 'pt-[25px] pb-[50px]' : 'pt-[35px] pb-[65px]';
   const cardSize = isRegister
     ? 'max-w-[440px] px-[34px] py-[30px] [@media(max-width:480px)]:py-6'
@@ -14,7 +29,8 @@ export const AuthForm = ({ isRegister = false, heading, title, description, fiel
         <p className="text-[12px] font-bold tracking-[2px] text-highlight">{heading}</p>
         <h1 className={`my-2 ${titleSize}`}>{title}</h1>
         <p className="text-[14px] text-muted">{description}</p>
-        <form className={`flex flex-col ${isRegister ? 'mt-4' : 'mt-[25px]'}`}>
+
+        <form onSubmit={onSubmit} className={`flex flex-col ${isRegister ? 'mt-4' : 'mt-[25px]'}`}>
           {fields.map((field) => (
             <FormField
               key={field.name}
@@ -23,11 +39,27 @@ export const AuthForm = ({ isRegister = false, heading, title, description, fiel
               inputPadding={isRegister ? 'py-[11px]' : 'py-3'}
             />
           ))}
-          <FormButton margin={isRegister ? 'mt-5' : 'mt-[22px]'}>{button}</FormButton>
+
+          <FormButton
+            margin={isRegister ? 'mt-5' : 'mt-[22px]'}
+            disabled={loading}
+          >
+            {loading ? 'Feldolgozás...' : button}
+          </FormButton>
         </form>
+
+        {error && (
+          <p className="mt-3 text-center text-sm text-red-500">{error}</p>
+        )}
+
+        {success && (
+          <p className="mt-3 text-center text-sm text-green-500">{success}</p>
+        )}
+
         <p className={`text-center text-[14px] text-muted ${isRegister ? 'mt-5' : 'mt-[23px]'}`}>
           {question} <Link className="text-highlight" to={link}>{linkText}</Link>
         </p>
+
         <p className="text-center text-[11px] text-muted">{note}</p>
       </section>
     </main>
