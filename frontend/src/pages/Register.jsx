@@ -18,6 +18,5 @@ export const Register = () => (
     question="Van már fiókod?"
     link="/login"
     linkText="Bejelentkezés"
-    note="Bemutatóverzió: az űrlap nem ment adatokat."
   />
 );

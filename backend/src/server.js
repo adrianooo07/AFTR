@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
@@ -26,4 +25,12 @@ const PORT = 3000;
 
 app.listen(PORT, () => {
     console.log(`[ 🚀 ] A backend szerver elindult: http://localhost:${PORT}`);
+        message: "fut a program kirajjjjjj"
+    });
+});
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`[ 🚀 ] A backend szerver elindult a kovetkezo cimen: http://localhost:${PORT} [ ✅ ]`);
 });

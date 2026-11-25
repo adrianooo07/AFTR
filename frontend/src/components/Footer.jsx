@@ -3,7 +3,7 @@ export const Footer = ({ isHome }) => {
     return (
       <footer className="mx-auto flex max-w-[1120px] justify-between px-6 py-[25px] text-[12px] text-muted [@media(max-width:720px)]:flex-col [@media(max-width:720px)]:gap-1">
         <span className="font-extrabold tracking-[2px] text-copy">AFTR</span>
-        <p>Iskolai projekt – statikus frontend bemutató</p>
+        <p>Iskolai projekt</p>
       </footer>
     );
   }
