@@ -15,7 +15,7 @@ export const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async (event) => {
-    console.log("REGISZTRÁCIÓS ŰRLAP ELKÜLDVE!");
+    //console.log("REGISZTRÁCIÓS ŰRLAP ELKÜLDVE!");
     event.preventDefault();
     const form = event.currentTarget;
 
