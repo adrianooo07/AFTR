@@ -1,4 +1,5 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import prisma from "../config/prisma.js";
 
 export const register = async (req, res) => {
@@ -77,6 +78,72 @@ export const register = async (req, res) => {
 
         return res.status(500).json({
             message: "Szerverhiba történt a regisztráció során."
+        });
+    }
+};
+
+
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Az e-mail-cím és a jelszó megadása kötelező!"
+            });
+        }
+
+        const normalizedEmail = email.trim().toLowerCase();
+
+        const user = await prisma.user.findUnique({
+            where: {
+                email: normalizedEmail
+            }
+        });
+
+        if (!user) {
+            return res.status(401).json({
+                message: "Hibás e-mail-cím vagy jelszó!"
+            });
+        }
+
+        const passwordMatch = await bcrypt.compare(
+            password,
+            user.password
+        );
+
+        if (!passwordMatch) {
+            return res.status(401).json({
+                message: "Hibás e-mail-cím vagy jelszó!"
+            });
+        }
+
+        const token = jwt.sign(
+            {
+                userId: user.id,
+                email: user.email
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "7d"
+            }
+        );
+
+        return res.status(200).json({
+            message: "Sikeres bejelentkezés!",
+            token,
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }
+        });
+
+    } catch (error) {
+        console.error("Bejelentkezési hiba:", error);
+
+        return res.status(500).json({
+            message: "Szerverhiba történt a bejelentkezés során."
         });
     }
 };
