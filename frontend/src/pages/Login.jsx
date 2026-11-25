@@ -28,18 +28,26 @@ export const Login = () => {
     try {
       setLoading(true);
 
+      console.log('Login indítása...');
+
       const data = await loginUser({
         email,
         password
       });
 
+      console.log('Backend adatok:', data);
+      console.log('Kapott token:', data.token);
+
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
+
+      console.log('Mentett token:', localStorage.getItem('token'));
 
       setSuccess(data.message || 'Sikeres bejelentkezés!');
       form.reset();
 
     } catch (error) {
+      console.error('Login hiba:', error);
       setError(error.message);
 
     } finally {
