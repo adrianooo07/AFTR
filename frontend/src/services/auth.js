@@ -28,7 +28,12 @@ export const loginUser = async (userData) => {
         body: JSON.stringify(userData)
     });
 
-    const data = await response.json();
+    const text = await response.text();
+
+    console.log("Backend válaszkód:", response.status);
+    console.log("Backend válasz:", text);
+
+    const data = JSON.parse(text);
 
     if (!response.ok) {
         throw new Error(data.message || "Hiba történt a bejelentkezés során!");
